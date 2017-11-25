@@ -1,0 +1,34 @@
+program Variables;
+#include("stdlib.hhf")
+
+static
+    intFive: int32 := 5;
+    intUndefined: int32;
+
+begin Variables;
+
+    stdout.put(
+        "intFive -> ",
+        intFive,
+        nl
+    );
+
+    stdout.put(
+        "intUndefined -> ",
+        intUndefined,
+        nl
+    );
+
+    stdout.put(
+        "set intUndefined: "
+    );
+    
+    stdin.get(intUndefined);
+    
+    stdout.put(
+        "intUndefined -> ",
+        intUndefined,
+        nl
+    );
+
+end Variables;
