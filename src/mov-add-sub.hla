@@ -1,0 +1,46 @@
+program MoveAddSub;
+#include("stdlib.hhf")
+
+static
+    i32A: int32;
+    i32B: int32;
+    i32C: int32;
+
+begin MoveAddSub;
+
+    stdout.put(
+        "a + b = c",
+        nl
+    );
+    
+    stdout.put("a: ", nl);
+    stdin.get(i32A);
+
+    stdout.put("b: ", nl);
+    stdin.get(i32B);
+
+    mov(i32A, eax);
+    add(i32B, eax);
+    mov(eax, i32C);
+
+    stdout.put("c: ", i32C ,nl);
+
+
+    stdout.put(
+        "a - b = c",
+        nl
+    );
+    
+    stdout.put("a: ", nl);
+    stdin.get(i32A);
+
+    stdout.put("b: ", nl);
+    stdin.get(i32B);
+
+    mov(i32A, eax);
+    sub(i32B, eax);
+    mov(eax, i32C);
+
+    stdout.put("c: ", i32C ,nl);
+    
+end MoveAddSub;
