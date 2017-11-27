@@ -1,0 +1,15 @@
+program WhileDo;
+#include("stdlib.hhf")
+
+static
+    i: int32;
+
+begin WhileDo;
+
+    mov(0, i);
+
+    while(i < 10) do
+        stdout.put("i = ", i, nl);
+        add(1, i);
+    endwhile;
+end WhileDo;
