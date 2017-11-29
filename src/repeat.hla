@@ -1,0 +1,13 @@
+program RepeatDemo;
+#include("stdlib.hhf")
+
+begin RepeatDemo;
+
+    mov(0, eax);
+
+    repeat
+        stdout.put("i= ", eax, nl);
+        add(1, eax);
+    until(eax >= 10);
+
+end RepeatDemo;
