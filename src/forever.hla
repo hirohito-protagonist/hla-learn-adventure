@@ -1,0 +1,14 @@
+program ForeverDemo;
+#include("stdlib.hhf")
+
+static
+    i: int32;
+    
+begin ForeverDemo;
+
+    forever
+        stdout.put("integer < 10:", nl)
+        stdin.get(i);
+        breakif(i < 10);
+    endfor;
+end ForeverDemo;
