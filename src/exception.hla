@@ -1,0 +1,22 @@
+program ExceptionDemo;
+#include("stdlib.hhf")
+
+static
+    i: int32;
+    isOk: boolean := false;
+
+begin ExceptionDemo;
+
+    repeat
+        mov(false, isOk);
+        try
+            stdout.put("intiner -> ");
+            stdin.get(i);
+            mov(true, isOk);
+        exception(ex.ConversionError)
+            stdout.put("Invalid number, try again", nl);
+        exception(ex.ValueOutOfRange)
+            stdout.put("The number is too big, try again", nl);
+        endtry;
+    until(isOk);
+end ExceptionDemo;
