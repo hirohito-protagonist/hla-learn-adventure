@@ -1,0 +1,25 @@
+program CharInput;
+#include("stdlib.hhf");
+
+static
+    counter: int32;
+
+begin CharInput;
+    repeat
+        mov(14, counter);
+        while(counter > 0) do
+            stdout.put(counter:3);
+            sub(1, counter);
+        endwhile;
+
+        stdout.put(nl, nl, "Next iteration? (Y/n):");
+        forever
+            stdin.readLn();
+            stdin.getc();
+            breakif(al = 'n');
+            breakif(al = 'y');
+            stdout.put("Choose 'y' or 'n':");
+        endfor;
+        stdout.newln();
+    until(al = 'n');
+end CharInput;
