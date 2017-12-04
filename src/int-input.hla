@@ -1,0 +1,29 @@
+program IntInput;
+#include("stdlib.hhf");
+
+static
+    i8: int8;
+    i16: int16;
+    i32: int32;
+
+begin IntInput;
+
+    stdout.put("int 8-bit (-128..127): ");
+    stdin.geti8();
+    mov(al, i8);
+
+    stdout.put("int 16-bit (-32 768..32 767): ");
+    stdin.geti16();
+    mov(ax, i16);
+
+    stdout.put("int 32-bit (-2..2 miliard): ");
+    stdin.geti32();
+    mov(eax, i32);
+
+    stdout.put(
+        nl,
+        "8 bit -> ", i8, nl
+        "16 bit -> ", i16, nl
+        "32 bit -> ", i32
+    );
+end IntInput;
