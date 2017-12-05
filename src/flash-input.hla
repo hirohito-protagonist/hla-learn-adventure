@@ -1,0 +1,18 @@
+program FlashInputDemo;
+#include("stdlib.hhf")
+
+static
+    a: int8;
+    b: int16;
+
+begin FlashInputDemo;
+    stdout.put("int 8 bit (-128..127): ");
+    stdin.geti8();
+    mov(al, a);
+    stdout.put(nl, "result: ", a);
+    stdin.flushInput(); // in case if provided two numbers like 123 456 in terminal
+    stdout.put(nl, "int 16 bit (-32 768..32 767): ");
+    stdin.geti16();
+    mov(ax, b);
+    stdout.put(nl, "result: ", b);
+end FlashInputDemo;
