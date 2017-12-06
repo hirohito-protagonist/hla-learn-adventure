@@ -1,0 +1,27 @@
+program UnprotectedDemo;
+#include("stdlib.hhf")
+
+static
+    input: int32;
+
+begin UnprotectedDemo;
+
+    forever
+        try
+            stdout.put("write int: ");
+            stdin.get(input);
+            stdout.put("int: ", input, nl);            
+            unprotected
+                break;
+        exception(ex.ValueOutOfRange)
+            stdout.put("number is to big", nl);
+        exception(ex.ConversionError)
+            stdout.put("incorrect number", nl);
+        endtry;
+    endfor;
+
+    stdout.put("write int once again: ");
+    stdin.get(input);
+    stdout.put("int: ", input, nl);
+
+end UnprotectedDemo;
