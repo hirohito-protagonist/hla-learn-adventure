@@ -18,14 +18,14 @@
 section  .text code align=16
 
 
+        extern     STDOUT_PUTI32
         extern     STDOUT_NEWLN
         extern     DefaultExceptionHandler__hla_
         extern     abstract__hla_
         extern     HardwareException__hla_
         extern     BuildExcepts__hla_
         extern     STDOUT_PUTS
-        extern     STDOUT_PUTD
-        extern     STDIN_GETI32
+        extern     STDIN_GETH32
         extern     Raise__hla_
         extern     shortDfltExcept__hla_
 
@@ -90,22 +90,25 @@ start:
         call       STDOUT_PUTS
 ;       push        eax
         db         050h ; 
-        call       STDIN_GETI32
-;        mov        [value__hla_1885], eax 
-        db         0a3h ; 
-        dd         (value__hla_1885+0)
+        call       STDIN_GETH32
+;        mov        [esp], eax 
+        db         089h ; 
+        db         04h ; 
+        db         024h ; 
 ;       pop        eax
         db         058h ; 
-;        mov        eax, [value__hla_1885] 
-        db         0a1h ; 
+;        mov        [value__hla_1885], eax 
+        db         0a3h ; 
         dd         (value__hla_1885+0)
 ;       push strict dword str__hla_1898
         db         068h ; 
         dd         str__hla_1898
         call       STDOUT_PUTS
-;       push        eax
-        db         050h ; 
-        call       STDOUT_PUTD
+;       push        dword [value__hla_1885]
+        db         0ffh ; 
+        db         035h ; 
+        dd         value__hla_1885
+        call       STDOUT_PUTI32
         call       STDOUT_NEWLN
 QuitMain__hla_:
 ;       push dword 0
@@ -129,21 +132,22 @@ section  .text
 
 
         align      (4)
-len__hla_1889 dd         012h
-        dd         012h
+len__hla_1889 dd         0eh
+        dd         0eh
 str__hla_1889:
- db "Decimal number -> "
+ db "Hex number -> "
  db 0
 
  db 0
 
         align      (4)
-len__hla_1898 dd         0fh
-        dd         0fh
+len__hla_1898 dd         012h
+        dd         012h
 str__hla_1898:
- db "Hex number -> $"
+ db "Decimal number -> "
  db 0
 
+ db 0
 
 
 
