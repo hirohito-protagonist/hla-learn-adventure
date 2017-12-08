@@ -1,0 +1,12 @@
+program ConvertFromDecimalToHex;
+#include("stdlib.hhf");
+
+static
+    value: int32;
+
+begin ConvertFromDecimalToHex;
+    stdout.put("Decimal number -> ");
+    stdin.get(value);
+    mov(value, eax);
+    stdout.put("Hex number -> $", eax, nl);
+end ConvertFromDecimalToHex;
