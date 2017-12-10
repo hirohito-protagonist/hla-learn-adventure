@@ -1,0 +1,31 @@
+program LogicalDemo;
+#include("stdlib.hhf")
+
+begin LogicalDemo;
+
+    stdout.put("a: ");
+    stdin.get(eax);
+    stdout.put("c: ");
+    stdin.get(ebx);
+
+    mov(eax, ecx);
+    and(ebx, ecx);
+    stdout.put("$", eax, " AND $", ebx, " = $", ecx, nl);
+
+    mov(eax, ecx);
+    or(ebx, ecx);
+    stdout.put("$", eax, " OR $", ebx, " = $", ecx, nl);
+
+    mov(eax, ecx);
+    xor(ebx, ecx);
+    stdout.put("$", eax, " XOR $", ebx, " = $", ecx, nl);
+
+    mov(eax, ecx);
+    not(ecx);
+    stdout.put("NOT $", eax, " = $", ecx, nl);
+    
+    mov(ebx, ecx);
+    not(ecx);
+    stdout.put("NOT $", ebx, " = $", ecx, nl);
+    
+end LogicalDemo;
