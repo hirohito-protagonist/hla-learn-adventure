@@ -1,0 +1,28 @@
+program TwosComplementDemo;
+#include("stdlib.hhf")
+
+static
+    PosValue: int8;
+    NegValue: int8;
+
+begin TwosComplementDemo;
+
+    stdout.put("Integer from 0 to 127: ");
+    stdin.get(PosValue);
+    stdout.put(nl, "Hex $");
+    stdout.puth8(PosValue);
+    mov(PosValue, al);
+    not(al);
+    stdout.put(nl, "After bit negection $", al, nl);
+    add(1, al);
+    stdout.put("After add 1 $", al, nl);
+    mov(al, NegValue);
+    stdout.put("Result (decimal): ", NegValue, nl);
+
+    stdout.put(nl, "The same operation with neg instruction", nl);
+    mov(PosValue, al);
+    neg(al);
+    mov(al, NegValue);
+    stdout.put("Hex $", al, nl);
+    stdout.put("Dec ", NegValue, nl);
+end TwosComplementDemo;
