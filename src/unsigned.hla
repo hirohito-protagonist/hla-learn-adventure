@@ -1,0 +1,15 @@
+program UnsignedNumberDemo;
+#include("stdlib.hhf")
+
+static
+    UnsValue: uns16;
+begin UnsignedNumberDemo;
+
+    stdout.put("Number from 32 768 to 65 535: ");
+    stdin.getu16();
+    mov(ax, UnsValue);
+    stdout.put(nl, "Result: ", UnsValue, nl);
+    stdout.put("The same number but with sign interpretation: ");
+    stdout.puti16(UnsValue);
+    stdout.newln();
+end UnsignedNumberDemo;
