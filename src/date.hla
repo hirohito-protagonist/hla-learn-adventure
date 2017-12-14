@@ -1,0 +1,53 @@
+program DateDemo;
+#include("stdlib.hhf")
+
+static
+    day: uns8;
+    month: uns8;
+    year: uns8;
+    packedDate: word;
+
+begin DateDemo;
+
+    stdout.put("Type month, day and year: ");
+    stdin.get(month, day, year);
+
+    mov(0, ax);
+    mov(ax, packedDate);
+    if (month > 12) then
+        stdout.put("Month should be from 1 to 12", nl);
+    elseif(month = 0) then 
+        stdout.put("Month should be from 1 to 12", nl);
+    elseif(day > 31) then
+        stdout.put("Day should be from 1 to 31", nl);
+    elseif(day = 0) then
+        stdout.put("Day should be from 1 to 31", nl);
+    elseif(year > 99) then
+        stdout.put("Yaer should be from 1 to 99", nl);
+    else
+        mov(month, al);
+        shl(5, ax);
+        or(day, al);
+        shl(7, ax);
+        or(year, al);
+        mov(ax, packedDate);
+    endif;
+
+    stdout.put("Packed date = $", packedDate, nl);
+
+    mov(packedDate, ax);
+    and($7f, al);
+    mov(al, year);
+
+    mov(packedDate, ax);
+    shr(7, ax);
+    and(%1_1111, al);
+    mov(al, day);
+
+    mov(packedDate, ax);
+    rol(4, ax);
+    and(%1111, al);
+    mov(al, month);
+
+    stdout.put("Date: ", month, "/", day, "/", year, nl);
+end DateDemo;
