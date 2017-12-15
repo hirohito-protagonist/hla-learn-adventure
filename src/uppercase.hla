@@ -1,0 +1,17 @@
+program UppercaseDemo;
+#include("stdlib.hhf")
+
+begin UppercaseDemo;
+
+    stdout.put("Type char: ");
+    stdin.getc();
+    if (al >= 'a') then
+        if (al <= 'z') then
+            and($5f, al);
+        endif;
+    endif;
+
+    stdout.put("Uppercase: '");
+    stdout.putc(al);
+    stdout.put("'", nl);
+end UppercaseDemo;
