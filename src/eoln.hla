@@ -1,0 +1,13 @@
+program EolnDemo;
+#include("stdlib.hhf")
+
+begin EolnDemo;
+    
+    stdout.put("Write some text: ");
+    stdin.flushInput();
+    repeat
+        stdin.getc();
+        stdout.put(al);
+        stdout.put("=$", al, nl);
+    until(stdin.eoln());
+end EolnDemo;
