@@ -1,0 +1,17 @@
+program FloatFormatingDemo;
+#include("stdlib.hhf")
+
+static
+    pi: real32 := 3.14159;
+    xp: real80 := -1.0e-104;
+    dVal: real64;
+begin FloatFormatingDemo;
+
+    stdout.put("xp: ", xp, nl);
+    stdout.put("xp: ", xp:10, nl);
+    stdout.put("pi: ", pi, nl);
+    stdout.put("pi: ", pi:5:3, nl);
+    stdout.put("Type float number: ");
+    stdin.get(dVal);
+    stdout.put(dVal);
+end FloatFormatingDemo;
