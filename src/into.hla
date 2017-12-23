@@ -1,0 +1,25 @@
+program IntoDemo;
+#include("stdlib.hhf")
+
+static
+    LOperand: int8;
+    ResultOp: int8;
+begin IntoDemo;
+
+    try
+        stdout.put("Integer (-128..+127): ");
+        stdin.geti8();
+        mov(al, LOperand);
+        stdout.put("Integer (-128..+127): ");
+        stdin.geti8();
+        add(LOperand, al);
+        into();
+        stdout.put("8-bit sum: ", (type int8 al), nl);
+    exception(ex.ConversionError)
+        stdout.put("conversion error");
+    exception(ex.ValueOutOfRange)
+        stdout.put("value ot of range");
+    exception(ex.IntoInstr)
+        stdout.put("sum is to big");
+    endtry;                
+end IntoDemo;
