@@ -1,0 +1,29 @@
+program BoundDemo;
+#include("stdlib.hhf")
+
+static
+    InputValue: int32;
+    GoodInput: boolean;
+
+begin BoundDemo;
+
+    repeat
+        mov(false, GoodInput);
+        try
+            stdout.put("Integer from 1 to 10: ");
+            stdin.flushInput();
+            stdin.geti32();
+            mov(eax, InputValue);
+            bound(eax, 1, 10);
+            mov(true, GoodInput);
+        exception(ex.ConversionError)
+            stdout.put("conversion errror", nl);
+        exception(ex.ValueOutOfRange)
+            stdout.put("value out of range", nl);
+        exception(ex.BoundInstr)
+            stdout.put("Number is not from 1 to 10", nl);
+        endtry;
+    until(GoodInput);
+
+    stdout.put("Integer: ", InputValue, " is correct", nl);
+end BoundDemo;
