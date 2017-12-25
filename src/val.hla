@@ -1,0 +1,22 @@
+program ValDemo;
+#include("stdlib.hhf")
+
+val
+    NotSoConstant := 0;
+
+begin ValDemo;
+    mov(NotSoConstant, eax);
+    stdout.put("eax = ", (type int32 eax), nl);
+
+    ?NotSoConstant := 10;
+    mov(NotSoConstant, eax);
+    stdout.put("eax = ", (type int32 eax), nl);
+
+    ?NotSoConstant := 20;
+    mov(NotSoConstant, eax);
+    stdout.put("eax = ", (type int32 eax), nl);
+
+    ?NotSoConstant := 30;
+    mov(NotSoConstant, eax);
+    stdout.put("eax = ", (type int32 eax), nl);
+end ValDemo;
