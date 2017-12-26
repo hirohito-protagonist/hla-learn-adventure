@@ -1,0 +1,14 @@
+program PointerConstDemo;
+#include("stdlib.hhf");
+
+static
+    b: byte := 0;
+       byte 1,2,3,4,5,6,7;
+const
+    pb:= &b + 1;
+
+begin PointerConstDemo;
+    mov(pb, ebx);
+    mov([ebx], al);
+    stdout.put("pb = $", al ,nl);
+end PointerConstDemo;
