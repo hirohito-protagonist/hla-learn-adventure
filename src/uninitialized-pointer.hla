@@ -1,0 +1,10 @@
+program UninitializedPointerDemo;
+#include("stdlib.hhf")
+
+static
+    Uninitialized: pointer to byte;
+begin UninitializedPointerDemo;
+    mov(Uninitialized, eax);
+    mov([eax], al);
+    stdout.put("Address for uninitialized pointer: $", al, nl);
+end UninitializedPointerDemo;
