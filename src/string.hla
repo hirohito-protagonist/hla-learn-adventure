@@ -1,0 +1,17 @@
+program StringDemo;
+#include("stdlib.hhf")
+
+static
+    strExample: string := "String 16 length";
+begin StringDemo;
+    
+    mov(strExample, ebx);
+    mov([ebx - 4], eax);
+    mov([ebx - 8], ecx);
+
+    stdout.put(
+        "str = ", strExample, nl,
+        "str len = ", (type uns32 eax), nl,
+        "max len = ", (type uns32 ecx), nl
+    );
+end StringDemo;
