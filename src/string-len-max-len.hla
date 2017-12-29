@@ -1,0 +1,17 @@
+program StringLengthMaxLengthDemo;
+#include("stdlib.hhf")
+
+static
+    strExample: string := "String 16 length";
+begin StringLengthMaxLengthDemo;
+    
+    mov(strExample, ebx);
+    mov((type str.strRec [ebx]).length, eax);
+    mov((type str.strRec [ebx]).maxlen, ecx);
+
+    stdout.put(
+        "str = ", strExample, nl,
+        "str len = ", (type uns32 eax), nl,
+        "max len = ", (type uns32 ecx), nl
+    );
+end StringLengthMaxLengthDemo;
