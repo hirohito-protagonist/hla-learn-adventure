@@ -1,0 +1,16 @@
+program StringAllocationDemo;
+#include("stdlib.hhf")
+
+static
+    strExample: string;
+begin StringAllocationDemo;
+    
+    str.alloc(16);
+    mov(eax, strExample);
+
+    stdout.put("Type some text (max 16 characters): ");
+    stdin.flushInput();
+    stdin.gets(strExample);
+
+    stdout.put("-> ", strExample, nl);
+end StringAllocationDemo;
