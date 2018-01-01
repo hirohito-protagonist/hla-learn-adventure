@@ -1,0 +1,64 @@
+program ConstDemo;
+#include("stdlib.hhf")
+
+const
+    MemoryToAllocate := 4_000_000;
+    NumDWords := MemoryToAllocate div 4;
+    MisalignBy := 62;
+    MainRepetitions := 10000;
+    DataRepetitions := 999_900;
+    CacheLineSize := 16;
+begin ConstDemo;
+    
+    console.cls();
+    stdout.put(
+        "Align data in memory", nl,
+        "Press Enter to start"
+    );
+    mem.alloc(MemoryToAllocate);
+    mov(NumDWords, ecx);
+    repeat
+        dec(ecx);
+        mov(0, (type dword [eax + ecx * 4]));
+    until(!ecx);
+
+    stdin.readLn();
+
+    mov(MainRepetitions, edx);
+    add(MisalignBy, eax);
+
+    repeat
+        mov(DataRepetitions, ecx);
+        align(CacheLineSize);
+        repeat
+            sub(4, ecx);
+            mov([eax + ecx * 4], ebx);
+            mov([eax + ecx * 4], ebx);
+            mov([eax + ecx * 4], ebx);
+            mov([eax + ecx * 4], ebx);
+        until(!ecx);
+        dec(edx);
+    until(!edx);
+
+    stdout.put(stdio.bell, nl);
+    stdout.put("Press Enter");
+    stdin.readLn();
+
+    mov(MainRepetitions, edx);
+    sub(MisalignBy, eax);
+    repeat
+        mov(DataRepetitions, ecx);
+        align(CacheLineSize);
+        repeat
+            sub(4, ecx);
+            mov([eax + ecx * 4], ebx);
+            mov([eax + ecx * 4], ebx);
+            mov([eax + ecx * 4], ebx);
+            mov([eax + ecx * 4], ebx);
+        until(!ecx);
+        dec(edx);
+    until(!edx);
+
+    stdout.put(stdio.bell, nl);
+    mem.free(eax);
+end ConstDemo;
