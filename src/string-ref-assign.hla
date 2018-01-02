@@ -1,0 +1,30 @@
+program StringReferanceAssignDemo;
+#include("stdlib.hhf")
+
+static
+    string1: string;
+    string2: string;
+begin StringReferanceAssignDemo;
+    forever
+        stdout.put("Type text with at least 3 characters: ");
+        stdin.a_gets();
+        mov(eax, string1);
+        breakif((type str.strRec [eax]).length >= 3);
+        stdout.put("The text contains less than 3 characters", nl);
+    endfor;
+    stdout.put("You typed: '", string1, "'" nl);
+
+    mov(string1, ebx);
+    mov(ebx, string2);
+    stdout.put("string1 = '", string1, "'" nl);
+    stdout.put("string2 = '", string2, "'" nl);
+
+    mov('a', (type char [ebx]));
+    mov('b', (type char [ebx + 1]));
+    mov('c', (type char [ebx + 2]));
+    stdout.put("After assign 'abc' characters.", nl);
+    stdout.put("string1 = '", string1, "'" nl);
+    stdout.put("string2 = '", string2, "'" nl);
+
+    str.free(string1);
+end StringReferanceAssignDemo;
