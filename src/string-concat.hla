@@ -1,0 +1,31 @@
+program StringConcatDemo;
+#include("stdlib.hhf")
+
+static
+    UserName: string;
+    Hello: string;
+    a_Hello: string;
+
+begin StringConcatDemo;
+    
+    str.alloc(1024);
+    mov(eax, Hello);
+
+    stdout.put("Write your name: ");
+    stdin.flushInput();
+    stdin.a_gets();
+    mov(eax, UserName);
+
+    str.cpy("Hello ", Hello);
+    str.cat(UserName, Hello);
+
+    str.a_cat("Hello ", UserName);
+    mov(eax, a_Hello);
+
+    stdout.put("str.cat ", Hello, nl);
+    stdout.put("str.a_cat ", a_Hello, nl);
+
+    str.free(UserName);
+    str.free(Hello);
+    str.free(a_Hello);
+end StringConcatDemo;
