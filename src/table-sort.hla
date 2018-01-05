@@ -1,0 +1,51 @@
+program TableSortDemo;
+#include("stdlib.hhf")
+
+const
+    NumberOfElements := 16;
+
+static
+    DataToSort: uns32[NumberOfElements] := [
+        1, 2, 16, 14,
+        3, 9, 4, 10,
+        5, 7, 15, 12,
+        8, 6, 11, 13
+    ];
+    NoSwap: boolean;
+
+begin TableSortDemo;
+    
+    stdout.put("[");
+    for(mov(0, ebx); ebx <= NumberOfElements; inc(ebx)) do
+        if (ebx = NumberOfElements) then
+            stdout.put(DataToSort[ebx * 4]);
+        else
+            stdout.put(DataToSort[ebx * 4], ", ");
+        endif;
+    endfor;
+    stdout.put("]", nl);
+
+    repeat
+        mov(true, NoSwap);
+        for(mov(0, ebx); ebx <= NumberOfElements - 2; inc(ebx)) do
+            mov(DataToSort[ebx * 4], eax);
+            if (eax > DataToSort[ebx * 4 + 4]) then
+                mov(DataToSort[ebx * 4 + 4], ecx);
+                mov(ecx, DataToSort[ebx * 4]);
+                mov(eax, DataToSort[ebx * 4 + 4]);
+                mov(false, NoSwap);
+            endif;
+        endfor;
+    until(NoSwap);
+
+    stdout.put("[");
+    for(mov(0, ebx); ebx <= NumberOfElements; inc(ebx)) do
+        if (ebx = NumberOfElements) then
+            stdout.put(DataToSort[ebx * 4]);
+        else
+            stdout.put(DataToSort[ebx * 4], ", ");
+        endif;
+    endfor;
+    stdout.put("]", nl);
+
+end TableSortDemo;
