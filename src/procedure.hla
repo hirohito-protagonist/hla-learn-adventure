@@ -1,0 +1,21 @@
+program ProcedureDemo;
+#include("stdlib.hhf")
+
+    procedure zeroBytes;
+    begin zeroBytes;
+
+        mov(0, eax);
+        mov(256, ecx);
+        repeat
+            mov(eax, [ebx]);
+            add(4, ebx);
+            dec(ecx);
+        until(ecx = 0);
+    end zeroBytes;
+
+static
+    dwArray: dword[256];
+begin ProcedureDemo;
+    lea(ebx, dwArray);
+    call zeroBytes;
+end ProcedureDemo;
