@@ -1,0 +1,28 @@
+program RecordDemo;
+#include("stdlib.hhf")
+
+type
+    Point: record
+        x: int32;
+        y: int32;
+        z: int32;
+    endrecord;
+
+    Pixel: record
+        pt: Point;
+        color: dword;
+    endrecord;
+
+static
+    Display: Pixel := Pixel:[Point:[0, 1, 2], 10];
+begin RecordDemo;
+    stdout.put(
+        "Display point:", 
+        " x = ", Display.pt.x, 
+        " y = ", Display.pt.y,
+        " z = ", Display.pt.z,
+        nl
+    );
+
+    stdout.put("Display color: ", (type int32 Display.color));
+end RecordDemo;
