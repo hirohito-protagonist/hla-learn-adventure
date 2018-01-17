@@ -1,0 +1,29 @@
+program DynamicArrDemo;
+#include("stdlib.hhf")
+
+static
+    ArraySize: uns32;
+    BaseAddress: pointer to uns32;
+
+begin DynamicArrDemo;
+    stdout.put("Provide array len: ");
+    stdin.getu32();
+    mov(eax, ArraySize);
+    shl(2, eax);
+    mem.alloc(eax);
+    mov(eax, BaseAddress);
+
+    stdout.put(nl, "Filled with zeros", nl);
+    mov(BaseAddress, ebx);
+    mov(0, eax);
+    for (mov(0, esi); esi < ArraySize; inc(esi)) do
+        mov(eax, BaseAddress[esi * 4]);
+    endfor;
+
+    stdout.put("[");
+    for (mov(0, esi); esi < ArraySize; inc(esi)) do
+        stdout.put((type int32 [ebx + esi * 4]), ",");
+    endfor;
+    stdout.put("]");
+    mem.free(ebx);
+end DynamicArrDemo;
