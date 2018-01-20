@@ -1,0 +1,40 @@
+program PreservationProcedureDemo;
+#include("stdlib.hhf")
+
+procedure PrintSpaces;
+begin PrintSpaces;
+    push(ecx);
+    push(eax);
+    mov(40, ecx);
+    repeat
+        mov(' ', al);
+        stdout.putc(al);
+        dec(ecx);
+    until(ecx = 0);
+    pop(eax);
+    pop(ecx);
+end PrintSpaces;
+
+begin PreservationProcedureDemo;
+
+    mov(10, eax);
+    repeat
+        call PrintSpaces;
+        stdout.put('*', nl);
+        dec(eax);
+    until(eax = 0);
+
+    mov(5, ebx);
+    while(ebx > 0) do
+        call PrintSpaces;
+        stdout.put((type int32 ebx), nl);
+        dec(ebx);
+    endwhile;
+
+    mov(110, ecx);
+    for(mov(0, eax); eax < 7; inc(eax)) do
+        PrintSpaces();
+        stdout.put((type int32 eax), " ", (type int32 ecx), nl);
+        dec(ecx);
+    endfor;
+end PreservationProcedureDemo;
