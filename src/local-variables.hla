@@ -1,0 +1,37 @@
+program LocalVariablesDemo;
+#include("stdlib.hhf")
+
+static
+    i: uns32 := 10;
+    j: uns32 := 20;
+
+    procedure First;
+    var
+        i: uns32;
+        j: uns32;
+    begin First;
+        mov(10, j);
+        for(mov(0, i); i < 10; inc(i)) do
+            stdout.put("i= ", i, " j= ", j, nl);
+            dec(j);
+        endfor;
+    end First;
+
+    procedure Second;
+    var
+        i: uns32;
+    begin Second;
+        mov(10, j);
+        for(mov(0, i); i < 10; inc(i)) do
+            stdout.put("i= ", i, " j= ", j, nl);
+            dec(j);
+        endfor;
+    end Second;
+
+begin LocalVariablesDemo;
+    
+    call First;
+    stdout.put("-----------------------", nl);
+    call Second;
+    stdout.put("i= ", i, " j= ", j, nl);
+end LocalVariablesDemo;
