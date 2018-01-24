@@ -1,0 +1,24 @@
+program ProcedurePassByValueDemo;
+#include("stdlib.hhf")
+
+procedure PrintNChars(val n:uns32; val c:char);
+begin PrintNChars;
+    push(ecx);
+    mov(n, ecx);
+    if (n = 0) then
+        stdout.put(c);
+    else    
+        repeat
+            stdout.put(c);
+            dec(ecx);
+        until(ecx = 0);
+    endif;
+    pop(ecx);
+end PrintNChars;
+
+begin ProcedurePassByValueDemo;
+    for(mov(0, eax); eax < 10; inc(eax)) do
+        PrintNChars((type uns32 eax), '*');
+        stdout.put(nl);
+    endfor;
+end ProcedurePassByValueDemo;
