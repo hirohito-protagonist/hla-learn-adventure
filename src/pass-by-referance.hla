@@ -1,0 +1,40 @@
+program ProcedurePassByReferanceDemo;
+#include("stdlib.hhf")
+static
+    i: int32;
+    j: int32;
+
+    procedure Pbr(var a: int32; var b: int32);
+    const
+        aa: text := "(type int32 [ebx])";
+        bb: text := "(type int32 [ebx])";
+    begin Pbr;
+        push(eax);
+        push(ebx);
+
+        mov(a, ebx);
+        mov(-1, aa);
+
+        mov(b, ebx);
+        mov(-2, bb);
+
+        mov(bb, eax);
+        mov(a, ebx);
+        add(aa, eax);
+        stdout.put("a+b=", (type int32 eax), nl);
+
+        pop(ebx);
+        pop(eax);
+    end Pbr;
+begin ProcedurePassByReferanceDemo;
+    
+    mov(50, i);
+    mov(25, j);
+
+    Pbr(i, j);
+
+    stdout.put(
+        "i = ", i, nl,
+        "j = ", j, nl
+    );
+end ProcedurePassByReferanceDemo;
