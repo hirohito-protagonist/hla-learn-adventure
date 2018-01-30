@@ -1,0 +1,22 @@
+program FunctionsDemo;
+#include("stdlib.hhf")
+
+    procedure MyAdd(a:int32; b: int32); @returns("EAX");
+    begin MyAdd;
+        push(ebx);
+        mov(a, ebx);
+        mov(b, eax);
+        add(ebx, eax);
+        pop(ebx);
+    end MyAdd;
+begin FunctionsDemo;
+    
+    mov(234, ebx);
+    mov(0, eax);
+    mov(MyAdd(2, 2), ecx); // possible because of @returns in procedure
+    stdout.put("add 2 + 2 = ",  (type int32 ecx), " <- ecx", nl);
+    MyAdd(2, 4); // store value in eax register
+
+    stdout.put("add 2 + 4 = ",  (type int32 eax), " <- eax", nl);
+    stdout.put("ebx -> ", (type int32 ebx));
+end FunctionsDemo;
