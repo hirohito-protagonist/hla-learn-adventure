@@ -1,0 +1,81 @@
+program QuickSortDemo;
+#include("stdlib.hhf")
+
+type
+    ArrayType: uns32[10];
+
+static
+    theArray: ArrayType := [1, 10, 2, 9, 3, 8, 4, 7, 5, 6];
+
+    procedure quicksort(var a: ArrayType; val low: int32; val high: int32);
+    const
+        i: text := "(type int32 edi)";
+        j: text := "(type int32 esi)";
+        middle: text := "(type uns32 edx)";
+        ary: text := "[ebx]";
+    begin quicksort;
+        push(eax);
+        push(ebx);
+        push(ecx);
+        push(edx);
+        push(esi);
+        push(edi);
+
+        mov(a, ebx);
+        mov(low, edi);
+        mov(high, esi);
+
+        mov(i, eax);
+        add(j, eax);
+        shr(1, eax);
+        mov(ary[eax * 4], middle);
+
+        repeat
+            
+            while(middle > ary[i * 4]) do
+                inc(i);
+            endwhile;
+
+            while(middle < ary[j * 4]) do
+                dec(j);
+            endwhile;
+
+            if(i <= j) then
+                mov(ary[i * 4], eax);
+                mov(ary[j * 4], ecx);
+                mov(eax, ary[j * 4]);
+                mov(ecx, ary[i * 4]);
+                inc(i);
+                dec(j);
+            endif;
+        until(i > j);
+
+        if (low < j) then
+            quicksort(a, low, j);
+        endif;
+        if (i < high) then
+            quicksort(a, i, high);
+        endif;
+        pop(edi);
+        pop(esi);
+        pop(edx);
+        pop(ecx);
+        pop(ebx);
+        pop(eax);
+    end quicksort;
+
+begin QuickSortDemo;
+    
+    stdout.put("Before: ", nl);
+    for(mov(0, eax); eax < 10; inc(eax)) do
+        stdout.put(theArray[eax * 4]:5);
+    endfor;
+    stdout.newln();
+
+    quicksort(theArray, 0, 9);
+
+    stdout.put("After: ", nl);
+    for(mov(0, eax); eax < 10; inc(eax)) do
+        stdout.put(theArray[eax * 4]:5);
+    endfor;
+end QuickSortDemo;
