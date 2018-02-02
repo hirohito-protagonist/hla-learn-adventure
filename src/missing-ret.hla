@@ -1,0 +1,20 @@
+program ProcedureMissingRetDemo;
+#include("stdlib.hhf")
+
+    // Mark procedure as @noframe to instruct compiler that 
+    // implementetor is responsible to use ret instruction
+    // to proper mark finish procedure.
+    procedure FirstProc;@noframe;@nodisplay;
+    begin FirstProc;
+        stdout.put("run first proc", nl)
+    end FirstProc;
+
+    // correct definition of procedure with @noframe.
+    procedure SecondProc;@noframe;@nodisplay;
+    begin SecondProc;
+        stdout.put("run second proc", nl);
+        ret();
+    end SecondProc;
+begin ProcedureMissingRetDemo;
+    call FirstProc;
+end ProcedureMissingRetDemo;
