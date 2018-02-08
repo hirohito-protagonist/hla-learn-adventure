@@ -1,0 +1,38 @@
+program ProcedureArgumentsInCodeDemo;
+#include("stdlib.hhf")
+
+    procedure print;@noframe;@nodisplay;
+    const
+        ReturnAddress: text := "(type dword [ebp + 4])";
+    begin print;
+
+        push(ebp);
+        mov(esp, ebp);
+        
+        push(eax);
+        push(ebx);
+
+        
+        mov(ReturnAddress, ebx);
+
+        forever
+            mov([ebx], al);
+            breakif(!al);
+            stdout.putc(al);
+            inc(ebx);
+        endfor;   
+
+        inc(ebx);
+        mov(ebx, ReturnAddress);
+
+        pop(ebx);
+        pop(eax);
+        pop(ebp);
+
+        ret();
+    end print;
+begin ProcedureArgumentsInCodeDemo;
+    
+    call print;
+    byte "Ahoj hla", 10, 0;
+end ProcedureArgumentsInCodeDemo;
