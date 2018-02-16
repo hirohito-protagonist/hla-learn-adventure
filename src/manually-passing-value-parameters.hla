@@ -1,0 +1,21 @@
+program ManuallyPassingValueParametersDemo;
+#include("stdlib.hhf")
+
+    procedure ValueParams(p1: uns32; p2: uns32; p3: uns32);@nodisplay;
+    begin ValueParams;
+        push(eax);
+        mov(p1, eax);
+        add(p2, eax);
+        add(p3, eax);
+
+        stdout.put("p1 + p2 + p3 = ", (type uns32 eax), nl);
+
+        pop(eax);
+    end ValueParams;
+begin ManuallyPassingValueParametersDemo;
+    
+    pushd(10);
+    pushd(20);
+    pushd(15);
+    call ValueParams;
+end ManuallyPassingValueParametersDemo;
