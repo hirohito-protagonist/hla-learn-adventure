@@ -7,7 +7,12 @@ Learn High Level Assembly by practice.
 3. To check installation clone the repo and navigate to `src` folder then from command line type:
     
     `hal -v hello-world.hla`
+
 4. If the compiler is working and on compilation there is no an error you are ready to go.  
 
-To emit asm file it's possible to NASM  by specifying `-nasm` flag for compiler. Here is command to use for examples:
+To emit asm file it's possible with NASM  by specifying `-nasm` flag for compiler. Here is command to use for examples:
+
 `hla -v -nasm hello-world.hla`
+
+# License
+ [Unlicense](/LICENSE)
