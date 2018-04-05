@@ -6,7 +6,7 @@ Learn High Level Assembly by practice.
 2. `Optional` [Download](http://www.nasm.us/) NASM - NASM here is used to emit asm files.
 3. To check installation clone the repo and navigate to `src` folder then from command line type:
     
-    `hal -v hello-world.hla`
+    `hla -v hello-world.hla`
 
 4. If the compiler is working and on compilation there is no an error you are ready to go.  
 
