@@ -1,0 +1,31 @@
+program SwitchDemo;
+#include("stdlib.hhf")
+
+static
+    i: int32;
+readonly
+    JmpTbl: dword [4] := [ &Case0, &Case1, &Case2, &Case3 ];
+begin SwitchDemo;
+    
+    stdout.put("Integer from 0 to 3: ");
+    stdin.get(i);
+    mov(i, ebx);
+    cmp(ebx, 3);
+    ja DeafultCase;
+    jmp(JmpTbl[eax * 4]);
+
+Case0:
+    stdout.put("Case 0");
+Case1:
+    stdout.put("Case 1");
+Case2:
+    stdout.put("Case 2");
+    jmp EndCase;
+Case3:
+    stdout.put("Case 3");
+    jmp EndCase;
+DeafultCase:
+    stdout.put("Deafult case");
+EndCase:
+    stdout.put("End case");
+end SwitchDemo;
