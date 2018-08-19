@@ -1,0 +1,35 @@
+program StateMachineDemo;
+#include("stdlib.hhf")
+
+static
+    State: dword := &State0;
+begin StateMachineDemo;
+    
+    jmp(State);
+
+    State0:
+        add(ebx, eax);
+        mov(&State1, State);
+        stdout.put("state 0", nl);
+        exit StateMachineDemo;
+
+    State1:
+        sub(ebx, eax);
+        mov(&State2, State);
+        stdout.put("state 1", nl);
+        exit StateMachineDemo;
+    
+    State2:
+        intmul(ebx, eax);
+        mov(&State3, State);
+        stdout.put("state 3", nl);
+        exit StateMachineDemo;
+    
+    State3:
+        push(edx);
+        xor(edx, edx);
+        div(ebx, edx:eax);
+        pop(edx);
+        mov(&State0, State);
+        stdout.put("state 3");
+end StateMachineDemo;
